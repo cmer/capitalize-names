@@ -33,6 +33,7 @@ For surnames the capitalization will also be done across hyphens however a serie
     - The letter after an initial "Mc" will be capitalized (to skip pass `skip_mc: true`).
     - The letter after an initial "Mac" will be capitalized (to skip pass `skip_mac: true`).
     - The letter after an initial "O'" will be capitalized (to skip pass `skip_o_apostrophe: true`).
+    - The letter after an initial "D'" will be capitalized (to skip pass `skip_d_apostrophe: true`).
     - An initial "van " will be downcased (to skip pass `skip_van_space: true`).
     - An initial "dit " will be downcased (to skip pass `skip_dit_space: true`).
     - An initial "de la " will be downcased (to skip pass `skip_de_la_space: true`).
