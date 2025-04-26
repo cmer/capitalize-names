@@ -35,14 +35,19 @@ class CapitalizeNamesTest < Minitest::Test
     assert_equal("Gleny Mejia-", CapitalizeNames.capitalize("Gleny Mejia-"))
     assert_equal("-Gleny Mejia-", CapitalizeNames.capitalize("-Gleny Mejia-"))
     assert_equal("Cinnamon Ballantye - Clarke", CapitalizeNames.capitalize("Cinnamon Ballantye - Clarke"))
-    assert_equal(" - Cinnamon Ballantye - Clarke-van Buren- ",
-      CapitalizeNames.capitalize(" - CinnAMon BaLLantye - Clarke-VAN BUREN- "))
+    assert_equal(
+      " - Cinnamon Ballantye - Clarke-van Buren- ",
+      CapitalizeNames.capitalize(" - CinnAMon BaLLantye - Clarke-VAN BUREN- "),
+    )
     assert_equal("Macie MacDonald", CapitalizeNames.capitalize("macie macdonald"))
     assert_equal("Macie MacDonald, (4th)", CapitalizeNames.capitalize("macie macdonald, (4TH)"))
     assert_equal("Mackenzie Mackenzie", CapitalizeNames.capitalize("mackenzie mackenzie"))
     assert_equal("Macdonald-John Johnson-MacDonald", CapitalizeNames.capitalize("macdonald-john johnson-macdonald"))
-    assert_equal("Jean-Louis-Deveau deCote-MacDonald-DeVeau",
-      CapitalizeNames.capitalize("jean-louis-deveau decote-macdonald-deveau"))
+    assert_equal(
+      "Jean-Louis-Deveau deCote-MacDonald-DeVeau",
+      CapitalizeNames.capitalize("jean-louis-deveau decote-macdonald-deveau"),
+    )
+    assert_equal("Nina D'Amore", CapitalizeNames.capitalize("nina d'amore"))
   end
 
   def test_format
@@ -88,6 +93,8 @@ class CapitalizeNamesTest < Minitest::Test
 
     assert_equal("Martin dit Buren", CapitalizeNames.capitalize("MARTIN DIT BUREN"))
     assert_equal("Martin Dit Buren", CapitalizeNames.capitalize("MARTIN DIT BUREN", skip_dit_space: true))
+
+    assert_equal("Nina D'amore", CapitalizeNames.capitalize("nina d'amore", skip_d_apostrophe: true)) # Add test for D' skip
   end
 
   def test_invalid_name

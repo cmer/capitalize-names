@@ -23,6 +23,7 @@ module CapitalizeNames
     MC = /(?<=\A|-)Mc(\w)(?=\w)/i
     MAC = /(?<=\A|-)Mac(\w)(?=\w)/i
     O_APOSTROPHE = /(?<=\A|-)O'(\w)(?=\w)/i
+    D_APOSTROPHE = /(?<=\A|-)D'(\w)(?=\w)/i
     VAN_SPACE = /(?<=\A|-)Van /i
     DE_LA_SPACE = /(?<=\A|-)De La /i
     DE_SPACE = /(?<=\A|-)De /i
@@ -39,6 +40,7 @@ module CapitalizeNames
       skip_de_space: false,
       skip_de_la_space: false,
       skip_dit_space: false,
+      skip_d_apostrophe: false,
     }
 
     SUFFIX_MAP = CapitalizeNames::SUFFIXES.each_with_object({}) { |suffix, map| map[suffix.downcase] = suffix }
@@ -109,6 +111,7 @@ module CapitalizeNames
         output = output.gsub(MC) { "Mc#{Regexp.last_match(1).upcase}" } unless options[:skip_mc]
         output = output.gsub(MAC) { "Mac#{Regexp.last_match(1).upcase}" } unless options[:skip_mac]
         output = output.gsub(O_APOSTROPHE) { "O'#{Regexp.last_match(1).upcase}" } unless options[:skip_o_apostrophe]
+        output = output.gsub(D_APOSTROPHE) { "D'#{Regexp.last_match(1).upcase}" } unless options[:skip_d_apostrophe]
 
         output
       end.join("")
